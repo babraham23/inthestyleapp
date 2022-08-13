@@ -22,7 +22,7 @@ const ScrollContext = ({ children, applyState, style }: any) => {
 
     return (
         <View style={styles.container}>
-            <View style={{ width: '100%', height: 50, backgroundColor: 'blue', zIndex: 99 }} />
+            <View style={{ width: '100%', height: 40, backgroundColor: 'black', zIndex: 99 }} />
             <OpacityHeader clampedScroll={clampedScroll} applyState={applyState} />
             <Animated.ScrollView
                 snapToOffsets={snapToOffsets}
@@ -34,9 +34,7 @@ const ScrollContext = ({ children, applyState, style }: any) => {
                 onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollYValue } } }], { useNativeDriver: true })}
                 contentInsetAdjustmentBehavior="automatic"
             >
-                <View style={style} >
-                {children}
-                </View>
+                <View style={style}>{children}</View>
             </Animated.ScrollView>
         </View>
     );
@@ -49,7 +47,7 @@ const styles = StyleSheet.create({
     },
     contentContianer: {
         flexGrow: 1,
-        paddingTop: 100
+        paddingTop: 100,
     },
     nonBlurredContent: {
         height: 45,

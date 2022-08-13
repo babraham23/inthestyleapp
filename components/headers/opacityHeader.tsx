@@ -1,5 +1,7 @@
 import React from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
+import { Text } from '../../style/typography';
+import SearchFilterbutton from '../buttons/searchFilterButton';
 // import Searchbar from '../searchbar';
 
 const OpacityHeader = (props: any) => {
@@ -31,8 +33,15 @@ const OpacityHeader = (props: any) => {
                 },
             ]}
         >
-            {/* <Searchbar applyState={props.applyState} /> */}
-            <View style={{ width: '100%', height: 80, backgroundColor: 'green' }} />
+            <View style={styles.wrapper}>
+                <View style={styles.buttonWrapper}>
+                    <SearchFilterbutton type={'Sort'} />
+                    <SearchFilterbutton type={'Filter'} />
+                </View>
+                <Text bold color={'white'} fontSize={14} style={styles.text}>
+                    Showing 50 products
+                </Text>
+            </View>
         </Animated.View>
     );
 };
@@ -40,9 +49,22 @@ const OpacityHeader = (props: any) => {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        top: 50,
+        top: 40,
         width: '100%',
         zIndex: 80,
+        flexDirection: 'row',
+    },
+    wrapper: {},
+    buttonWrapper: {
+        flexDirection: 'row',
+    },
+    text: {
+        // position: 'absolute',
+        // top: 55,
+        padding: 10,
+        backgroundColor: 'black',
+        width: '100%',
+        // bottom: 20,
     },
 });
 
