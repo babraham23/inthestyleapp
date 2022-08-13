@@ -4,26 +4,31 @@ import { Images } from '../../style/images';
 import { Text } from '../../style/typography';
 import PriceItem from './priceItem';
 import BorderButton from '../buttons/borderButton';
+import HeartButton from '../buttons/heartButton';
 
 type Props = {
     // style props
     right?: boolean;
 
     // data props
-    id?: string;
+    id?: number;
     description?: string;
-    price?: number
+    price?: number;
     salePrice?: number;
-    image?: string;
+    image?: any;
+    isSellingFast?: boolean;
 };
 
-const BrowseItem = ({ right }: Props) => {
+const BrowseItem: React.FC<Props> = ({ right, description, price, salePrice, image, isSellingFast }: Props) => {
     return (
         <View style={[styles.container, { marginLeft: right ? 10 : 0, marginRight: right ? 0 : 10 }]}>
-            <Image source={Images.PH2} style={styles.image} />
-            <Text numberOfLines={2} lineHeight={17} fontSize={16} style={styles.description} >This is a multiline description about this product</Text>
-            <PriceItem />
-            <BorderButton title='QUICK  ADD' />
+            <Image source={image} style={styles.image} />
+            <Text numberOfLines={2} lineHeight={17} fontSize={16} style={styles.description}>
+                {description}
+            </Text>
+            <PriceItem price={price} salePrice={salePrice} />
+            <BorderButton title="QUICK  ADD" />
+            <HeartButton style={styles.heart} />
         </View>
     );
 };
@@ -36,16 +41,21 @@ const styles = StyleSheet.create({
         // height: 300,
         width: '47.2%',
         borderColor: 'white',
-        marginBottom: 25
+        marginBottom: 25,
     },
     image: {
-      width: '100%',
-      height: 270,
-      resizeMode: 'contain'
+        width: '100%',
+        height: 270,
+        resizeMode: 'contain',
     },
     description: {
         paddingTop: 20,
         // paddingBottom: 10,
         height: 65,
-    }
+    },
+    heart: {
+        position: 'absolute',
+        right: 10,
+        top: 10,
+    },
 });

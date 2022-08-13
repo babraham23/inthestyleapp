@@ -1,6 +1,7 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 import { useTheme } from '../../hooks/useTheme';
+import { Images } from '../../style/images';
 import { Text } from '../../style/typography';
 
 type Props = {
@@ -9,28 +10,37 @@ type Props = {
 };
 
 const SearchFilterbutton = ({ onPress, type }: Props) => {
-    const { colors, borderRadius } = useTheme();
+    const { colors } = useTheme();
     return (
-        <>
-            <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={[styles.container, { borderRadius: borderRadius.button, borderColor: colors.primary }]}>
-                <Text center style={styles.text} fontSize={18} color={'black'}>
+        <View style={styles.container} >
+            <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={[styles.wrapper, { borderRightWidth: type === 'Sort' ? 1 : 0, borderColor: colors.primary, borderRightColor: colors.grey }]}>
+                <Text center  fontSize={18} color={'black'}>
                     {type}
                 </Text>
+                <Image source={type === 'Sort' ? Images.SORT : Images.FILTER} style={styles.image}  />
             </TouchableOpacity>
-        </>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         width: '50%',
-        height: 50,
         justifyContent: 'center',
-        // borderWidth: 2,
-        // marginTop: 3,
         backgroundColor: 'white',
+        paddingVertical: 15
     },
-    text: {},
+    wrapper: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    image: {
+        height: 20,
+        width: 20,
+        resizeMode: 'contain',
+        marginHorizontal: 5
+    }
 });
 
 export default SearchFilterbutton;

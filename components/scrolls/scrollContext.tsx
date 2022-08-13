@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
+import { Text } from '../../style/typography';
 import OpacityHeader from '../headers/opacityHeader';
 
 const ScrollContext = ({ children, applyState, style }: any) => {
@@ -22,7 +23,11 @@ const ScrollContext = ({ children, applyState, style }: any) => {
 
     return (
         <View style={styles.container}>
-            <View style={{ width: '100%', height: 40, backgroundColor: 'black', zIndex: 99 }} />
+            <View style={styles.notificationWrapper}>
+                <Text center fontSize={14}>
+                    £5 OUTLET SHOP HERE
+                </Text>
+            </View>
             <OpacityHeader clampedScroll={clampedScroll} applyState={applyState} />
             <Animated.ScrollView
                 snapToOffsets={snapToOffsets}
@@ -49,8 +54,12 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         paddingTop: 100,
     },
-    nonBlurredContent: {
-        height: 45,
+    notificationWrapper: {
+        width: '100%',
+        height: 40,
+        backgroundColor: 'black',
+        zIndex: 99,
+        justifyContent: 'center',
     },
 });
 
