@@ -12,7 +12,7 @@ type Props = {
 const PriceItem = ({ price, salePrice }: Props) => {
     return (
         <View style={[styles.container]}>
-            {salePrice ? (
+            {salePrice !== null ? (
                 <>
                     <View>
                         <View style={styles.line} />

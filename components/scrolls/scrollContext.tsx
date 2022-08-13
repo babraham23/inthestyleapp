@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 import { Text } from '../../style/typography';
+import BasicHeader from '../headers/basicHeader';
 import OpacityHeader from '../headers/opacityHeader';
 
 const ScrollContext = ({ children, applyState, style }: any) => {
@@ -22,6 +23,8 @@ const ScrollContext = ({ children, applyState, style }: any) => {
     const snapToOffsets = [0, 210];
 
     return (
+        <>
+        <BasicHeader />
         <View style={styles.container}>
             <View style={styles.notificationWrapper}>
                 <Text center fontSize={14}>
@@ -42,6 +45,7 @@ const ScrollContext = ({ children, applyState, style }: any) => {
                 <View style={style}>{children}</View>
             </Animated.ScrollView>
         </View>
+        </>
     );
 };
 

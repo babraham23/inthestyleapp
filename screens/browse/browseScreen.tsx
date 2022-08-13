@@ -3,25 +3,38 @@ import React from 'react';
 import BasicHeader from '../../components/headers/basicHeader';
 import ScrollContext from '../../components/scrolls/scrollContext';
 import BrowseItem from '../../components/layouts/browseItem';
-import { browseData } from '../../dummydata/browseData';
+import { browseDummyDataData } from '../../dummydata/browseData';
+import { useUserContext } from '../../context/user.context';
+import SortModal from '../../components/modals/sortModal';
 
 const BrowseScreen = () => {
+    const { browsingData } = useUserContext();
+    const [visible, setVisible] = React.useState(true);
     return (
         <>
-            <BasicHeader />
-            <ScrollContext style={styles.container}>
-                {browseData.map((item) => (
-                    <BrowseItem 
-                      key={item.id} 
-                      id={item.id}
-                      description={item.description}
-                      price={item.price}
-                      salePrice={item.salePrice}
-                      image={item.image}
-                      isSellingFast={item.isSellingFast}  
+        <ScrollContext style={styles.container}>
+            {browsingData.map(
+                (item: {
+                    id: React.Key | null | undefined;
+                    description: string | undefined;
+                    price: number | undefined;
+                    salePrice: number | null | undefined;
+                    image: any;
+                    isSellingFast: boolean | undefined;
+                }) => (
+                    <BrowseItem
+                        key={item.id}
+                        id={item.id}
+                        description={item.description}
+                        price={item.price}
+                        salePrice={item.salePrice}
+                        image={item.image}
+                        isSellingFast={item.isSellingFast}
                     />
-                ))}
-            </ScrollContext>
+                )
+            )}
+        </ScrollContext>
+        <SortModal visible={visible} setVisible={setVisible} onPress={() => {}} />
         </>
     );
 };

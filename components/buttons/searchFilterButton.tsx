@@ -12,12 +12,16 @@ type Props = {
 const SearchFilterbutton = ({ onPress, type }: Props) => {
     const { colors } = useTheme();
     return (
-        <View style={styles.container} >
-            <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={[styles.wrapper, { borderRightWidth: type === 'Sort' ? 1 : 0, borderColor: colors.primary, borderRightColor: colors.grey }]}>
-                <Text center  fontSize={18} color={'black'}>
+        <View style={styles.container}>
+            <TouchableOpacity
+                onPress={onPress}
+                activeOpacity={0.8}
+                style={[styles.wrapper, { borderRightWidth: type === 'Sort' ? 1 : 0, borderColor: colors.primary, borderRightColor: colors.grey }]}
+            >
+                <Text center fontSize={18} color={'black'}>
                     {type}
                 </Text>
-                <Image source={type === 'Sort' ? Images.SORT : Images.FILTER} style={styles.image}  />
+                <Image source={type === 'Sort' ? Images.SORT : Images.FILTER} style={styles.image} />
             </TouchableOpacity>
         </View>
     );
@@ -28,7 +32,7 @@ const styles = StyleSheet.create({
         width: '50%',
         justifyContent: 'center',
         backgroundColor: 'white',
-        paddingVertical: 15
+        paddingVertical: 15,
     },
     wrapper: {
         flexDirection: 'row',
@@ -39,8 +43,8 @@ const styles = StyleSheet.create({
         height: 20,
         width: 20,
         resizeMode: 'contain',
-        marginHorizontal: 5
-    }
+        marginHorizontal: 5,
+    },
 });
 
 export default SearchFilterbutton;

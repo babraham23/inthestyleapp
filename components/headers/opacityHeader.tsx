@@ -1,11 +1,14 @@
 import React from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
+import { useUserContext } from '../../context/user.context';
 import { Text } from '../../style/typography';
 import SearchFilterbutton from '../buttons/searchFilterButton';
-// import Searchbar from '../searchbar';
+
 
 const OpacityHeader = (props: any) => {
     const { clampedScroll } = props;
+    const { browsingData } = useUserContext();
+
 
     const searchBarTranslate = clampedScroll.interpolate({
         inputRange: [0, 40],
@@ -39,7 +42,7 @@ const OpacityHeader = (props: any) => {
                     <SearchFilterbutton type={'Filter'} />
                 </View>
                 <Text bold color={'white'} fontSize={14} style={styles.text}>
-                    Showing 50 products
+                    Showing {browsingData.length} products
                 </Text>
             </View>
         </Animated.View>

@@ -11,10 +11,10 @@ type Props = {
     right?: boolean;
 
     // data props
-    id?: number;
+    id?: any;
     description?: string;
     price?: number;
-    salePrice?: number;
+    salePrice?: number | null;
     image?: any;
     isSellingFast?: boolean;
 };
