@@ -38,7 +38,7 @@ const OpacityHeader = (props: any) => {
         >
             <View style={styles.wrapper}>
                 <View style={styles.buttonWrapper}>
-                    <SearchFilterbutton type={'Sort'} />
+                    <SearchFilterbutton type={'Sort'} onPress={() => props.setVisible(true)} />
                     <SearchFilterbutton type={'Filter'} />
                 </View>
                 <Text bold color={'white'} fontSize={14} style={styles.text}>

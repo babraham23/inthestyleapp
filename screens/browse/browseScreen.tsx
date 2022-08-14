@@ -9,10 +9,10 @@ import SortModal from '../../components/modals/sortModal';
 
 const BrowseScreen = () => {
     const { browsingData } = useUserContext();
-    const [visible, setVisible] = React.useState(true);
+    const [visible, setVisible] = React.useState(false);
     return (
         <>
-        <ScrollContext style={styles.container}>
+        <ScrollContext setVisible={setVisible} style={styles.container}>
             {browsingData.map(
                 (item: {
                     id: React.Key | null | undefined;

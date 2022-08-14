@@ -3,8 +3,9 @@ import { Animated, View, StyleSheet } from 'react-native';
 import { Text } from '../../style/typography';
 import BasicHeader from '../headers/basicHeader';
 import OpacityHeader from '../headers/opacityHeader';
+import FadingText from '../layouts/fadingText';
 
-const ScrollContext = ({ children, applyState, style }: any) => {
+const ScrollContext = ({ children, applyState, style, setVisible }: any) => {
     const [scrollYValue, setScrollYValue] = useState(new Animated.Value(0));
 
     const clampedScroll = Animated.diffClamp(
@@ -26,12 +27,13 @@ const ScrollContext = ({ children, applyState, style }: any) => {
         <>
         <BasicHeader />
         <View style={styles.container}>
-            <View style={styles.notificationWrapper}>
+            {/* <View style={styles.notificationWrapper}>
                 <Text center fontSize={14}>
                     £5 OUTLET SHOP HERE
                 </Text>
-            </View>
-            <OpacityHeader clampedScroll={clampedScroll} applyState={applyState} />
+            </View> */}
+            <FadingText />
+            <OpacityHeader setVisible={setVisible} clampedScroll={clampedScroll} applyState={applyState} />
             <Animated.ScrollView
                 snapToOffsets={snapToOffsets}
                 snapToEnd={false}
