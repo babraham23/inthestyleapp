@@ -11,31 +11,7 @@ const BrowseScreen = () => {
     const { browsingData } = useUserContext();
     const [visible, setVisible] = React.useState(false);
     return (
-        <>
-        <ScrollContext setVisible={setVisible} style={styles.container}>
-            {browsingData.map(
-                (item: {
-                    id: React.Key | null | undefined;
-                    description: string | undefined;
-                    price: number | undefined;
-                    salePrice: number | null | undefined;
-                    image: any;
-                    isSellingFast: boolean | undefined;
-                }) => (
-                    <BrowseItem
-                        key={item.id}
-                        id={item.id}
-                        description={item.description}
-                        price={item.price}
-                        salePrice={item.salePrice}
-                        image={item.image}
-                        isSellingFast={item.isSellingFast}
-                    />
-                )
-            )}
-        </ScrollContext>
-        <SortModal visible={visible} setVisible={setVisible} onPress={() => {}} />
-        </>
+            <ScrollContext setVisible={setVisible} />
     );
 };
 

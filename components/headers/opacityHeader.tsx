@@ -6,18 +6,33 @@ import SearchFilterbutton from '../buttons/searchFilterButton';
 
 
 const OpacityHeader = (props: any) => {
-    const { clampedScroll } = props;
     const { browsingData } = useUserContext();
 
+    let SCROLL_VALUE = props.scrollYValue
+
+    console.log('Scroll Value', SCROLL_VALUE)
+
+    const clampedScroll = Animated.diffClamp(
+        Animated.add(
+            SCROLL_VALUE.interpolate({
+                inputRange: [0, 5],
+                outputRange: [0, 1],
+                extrapolateLeft: 'clamp',
+            }),
+            new Animated.Value(0)
+        ),
+        0,
+        50
+    );
 
     const searchBarTranslate = clampedScroll.interpolate({
-        inputRange: [0, 40],
+        inputRange: [0, 50],
         outputRange: [0, -250],
         extrapolate: 'clamp',
     });
 
     const searchBarOpacity = clampedScroll.interpolate({
-        inputRange: [0, 7],
+        inputRange: [0, 20],
         outputRange: [2, 0],
         extrapolate: 'clamp',
     });

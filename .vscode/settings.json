@@ -4,9 +4,6 @@
         "titleBar.inactiveForeground": "#FAd0cc",
         "titleBar.activeBackground": "#2B2B2B",
         "titleBar.inactiveBackground": "#2B2B2B",
-        "terminal.background": "#000",
-        "terminal.foreground": "#fff",
-        // "contrastBorder": "#FFB600",
         "statusBar.background": "#FAd0cc",
         "statusBar.foreground": "#2b2b2b"
     },
