@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
         height: 40,
         justifyContent: 'center',
         borderWidth: 2,
-        marginTop: 3
     },
     text: {},
 });

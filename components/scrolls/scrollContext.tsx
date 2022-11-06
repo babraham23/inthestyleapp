@@ -25,6 +25,8 @@ const ScrollContext = ({ children, applyState, style, setVisible }: any) => {
                     decelerationRate="normal"
                     scrollEventThrottle={16}
                     onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollYValue } } }], { useNativeDriver: false })}
+                    // onScroll=r{({ nativeEvent }: any) => console.log(nativeEvent.contentOffset.y)}
+                    // onScroll={handleScroll}
                     contentContainerStyle={styles.container}
                     style={styles.contentContainer}
                     renderItem={({ item }) => (
@@ -39,19 +41,6 @@ const ScrollContext = ({ children, applyState, style, setVisible }: any) => {
                         />
                     )}
                 />
-
-                {/* <Animated.ScrollView
-                snapToOffsets={snapToOffsets}
-                snapToEnd={false}
-                decelerationRate="normal"
-                scrollEventThrottle={16}
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.contentContianer}
-                onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollYValue } } }], { useNativeDriver: true })}
-                contentInsetAdjustmentBehavior="automatic"
-            >
-                <View style={style}>{children}</View>
-            </Animated.ScrollView> */}
             </View>
         </>
     );
@@ -82,3 +71,18 @@ const styles = StyleSheet.create({
 });
 
 export default ScrollContext;
+
+{
+    /* <Animated.ScrollView
+                snapToOffsets={snapToOffsets}
+                snapToEnd={false}
+                decelerationRate="normal"
+                scrollEventThrottle={16}
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={styles.contentContianer}
+                onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollYValue } } }], { useNativeDriver: true })}
+                contentInsetAdjustmentBehavior="automatic"
+            >
+                <View style={style}>{children}</View>
+            </Animated.ScrollView> */
+}

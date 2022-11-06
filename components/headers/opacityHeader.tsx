@@ -8,13 +8,11 @@ import SearchFilterbutton from '../buttons/searchFilterButton';
 const OpacityHeader = (props: any) => {
     const { browsingData } = useUserContext();
 
-    let SCROLL_VALUE = props.scrollYValue
-
-    console.log('Scroll Value', SCROLL_VALUE)
+    let event = props.scrollYValue
 
     const clampedScroll = Animated.diffClamp(
         Animated.add(
-            SCROLL_VALUE.interpolate({
+            event.interpolate({
                 inputRange: [0, 5],
                 outputRange: [0, 1],
                 extrapolateLeft: 'clamp',
